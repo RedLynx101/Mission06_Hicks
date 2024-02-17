@@ -43,6 +43,7 @@ namespace Mission06_Hicks.Controllers
 
             movie.LentTo = movie.LentTo ?? string.Empty;
             movie.Notes = movie.Notes ?? string.Empty;
+            movie.SubCategory = movie.SubCategory ?? string.Empty;
 
             if (ModelState.IsValid)
             {
