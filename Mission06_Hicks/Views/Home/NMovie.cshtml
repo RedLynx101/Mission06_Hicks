@@ -10,7 +10,12 @@
     <form asp-action="Apply" method="post">
         <div class="form-group">
             <label for="Category">Category</label>
-            <input type="text" class="form-control" id="Category" asp-for="Category" required>
+            <select class="form-control" id="Category" asp-for="Category" required>
+                <option>Action</option>
+                <option>Adventure</option>
+                <option>Romance</option>
+                <option>Sci-Fi</option>
+            </select>
         </div>
 
         <div class="form-group">
