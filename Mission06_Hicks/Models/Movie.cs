@@ -9,7 +9,6 @@ namespace Mission06_LastName.Models
 
         [Required]
         public string Category { get; set; }
-        public string? SubCategory { get; set; }
 
         [Required]
         public string Title { get; set; }

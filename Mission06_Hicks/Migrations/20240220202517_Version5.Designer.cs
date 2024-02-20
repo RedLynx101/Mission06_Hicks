@@ -10,8 +10,8 @@ using Mission06_LastName.Data;
 namespace Mission06_Hicks.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240217050954_Version3")]
-    partial class Version3
+    [Migration("20240220202517_Version5")]
+    partial class Version5
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

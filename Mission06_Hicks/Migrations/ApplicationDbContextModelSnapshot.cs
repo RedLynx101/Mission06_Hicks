@@ -44,9 +44,6 @@ namespace Mission06_Hicks.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SubCategory")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("TEXT");
