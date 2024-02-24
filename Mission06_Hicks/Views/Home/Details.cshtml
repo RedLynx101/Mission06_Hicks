@@ -1,0 +1,66 @@
+﻿@model Mission06_LastName.Models.Movie
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Title
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Title
+        </dd>
+        <dt class="col-sm-2">
+            Year
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Year
+        </dd>
+        <dt class="col-sm-2">
+            Director
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Director
+        </dd>
+        <dt class="col-sm-2">
+            Rating
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Rating
+        </dd>
+        <dt class="col-sm-2">
+            Edited
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Edited
+        </dd>
+        <dt class="col-sm-2">
+            Copied To Plex
+        </dt>
+        <dd class="col-sm-10">
+            @Model.CopiedToPlex
+        </dd>
+        <dt class="col-sm-2">
+            Lent To
+        </dt>
+        <dd class="col-sm-10">
+            @Model.LentTo
+        </dd>
+        <dt class="col-sm-2">
+            Notes
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Notes
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
