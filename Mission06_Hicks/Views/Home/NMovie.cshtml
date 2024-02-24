@@ -9,14 +9,11 @@
 <div class="container mt-3">
     <form asp-action="Apply" method="post">
         <div class="form-group">
-            <label for="Category">Category</label>
-            <select class="form-control" id="Category" asp-for="Category">
-                <option>Action</option>
-                <option>Adventure</option>
-                <option>Romance</option>
-                <option>Sci-Fi</option>
-            </select>
+            <label asp-for="CategoryId" class="control-label">Category</label>
+            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories"></select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
         </div>
+
 
         <div class="form-group">
             <label for="Title">Title</label>

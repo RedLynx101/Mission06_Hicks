@@ -13,16 +13,54 @@
         <form asp-action="Edit">
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
+                <label asp-for="Title" class="control-label">Title</label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Year" class="control-label"></label>
+                <label asp-for="CategoryId" class="control-label">Category</label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label">Year</label>
                 <input asp-for="Year" class="form-control" />
                 <span asp-validation-for="Year" class="text-danger"></span>
             </div>
-            <!-- Add other fields in the same way -->
+            <div class="form-group">
+                <label asp-for="Director" class="control-label">Director</label>
+                <input asp-for="Director" class="form-control" />
+                <span asp-validation-for="Director" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label">Rating</label>
+                <select asp-for="Rating" class="form-control">
+                    <option value="">Select a rating</option>
+                    <option value="G">G</option>
+                    <option value="PG">PG</option>
+                    <option value="PG-13">PG-13</option>
+                    <option value="R">R</option>
+                </select>
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" asp-for="Edited" class="form-check-input" />
+                <label asp-for="Edited" class="form-check-label">Edited</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" asp-for="CopiedToPlex" class="form-check-input" />
+                <label asp-for="CopiedToPlex" class="form-check-label">Copied to Plex</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="LentTo" class="control-label">Lent To</label>
+                <input asp-for="LentTo" class="form-control" />
+                <span asp-validation-for="LentTo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label">Notes</label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -31,7 +69,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="MovieList">Back to List</a>
 </div>
 
 @section Scripts {

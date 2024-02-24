@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission06_Hicks.Models;
@@ -34,35 +35,35 @@ namespace Mission06_Hicks.Controllers
 
         public IActionResult NMovie()
         {
+            // Fetch categories from the database and order them by name
+            ViewBag.Categories = new SelectList(_context.Categories.OrderBy(c => c.CategoryName), "CategoryId", "CategoryName");
+
             return View();
         }
 
-        [HttpPost]
 
+        [HttpPost]
         public IActionResult Apply(Movie movie)
         {
-
-            movie.LentTo = movie.LentTo ?? string.Empty;
-            movie.Notes = movie.Notes ?? string.Empty;
-
             if (ModelState.IsValid)
             {
                 _context.Movies.Add(movie);
                 _context.SaveChanges();
+                return RedirectToAction("MovieList");
+            }
 
-                return View("Index");
-            }
-            else
-            {
-                return View("About");
-            }
+            // Reload categories in case of a validation error
+            ViewBag.Categories = new SelectList(_context.Categories.OrderBy(c => c.CategoryName), "CategoryId", "CategoryName");
+            return View(movie);
         }
+
 
         public IActionResult MovieList()
         {
-            var movies = _context.Movies;
+            var movies = _context.Movies.Include(m => m.Category).ToList(); // Ensure you're including the Category
             return View(movies);
         }
+
 
         [HttpPost]
         public IActionResult DeleteMovie(int id)
@@ -93,7 +94,7 @@ namespace Mission06_Hicks.Controllers
             return View(movie);
         }
 
-        // Like GET: Movies/Edit/5
+        // GET: Movies/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -106,15 +107,14 @@ namespace Mission06_Hicks.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.Categories = new SelectList(_context.Categories, "CategoryId", "Category", movie.CategoryId); // Populate categories for dropdown
             return View(movie);
         }
 
-        // POST: Movies/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Category,Title,Year,Director,Rating,Edited,CopiedToPlex,LentTo,Notes")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CategoryId,Title,Year,Director,Rating,Edited,CopiedToPlex,LentTo,Notes")] Movie movie)
         {
             if (id != movie.Id)
             {
@@ -128,7 +128,7 @@ namespace Mission06_Hicks.Controllers
                     _context.Update(movie);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (DbUpdateConcurrencyException ex)
                 {
                     if (!MovieExists(movie.Id))
                     {
@@ -136,17 +136,28 @@ namespace Mission06_Hicks.Controllers
                     }
                     else
                     {
+                        // Log the exception (ex) or handle it as necessary
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(MovieList)); // Redirect to the movie list view after successful update
             }
+            // If we got this far, something failed; redisplay the form
+            ViewBag.Categories = new SelectList(_context.Categories, "CategoryId", "Category", movie.CategoryId); // Repopulate categories for dropdown
             return View(movie);
         }
 
         private bool MovieExists(int id)
         {
             return _context.Movies.Any(e => e.Id == id);
+        }
+
+
+        public IActionResult Create()
+        {
+            // Populate categories for dropdown list
+            ViewBag.Categories = new SelectList(_context.Categories, "CategoryId", "Category");
+            return View();
         }
 
 

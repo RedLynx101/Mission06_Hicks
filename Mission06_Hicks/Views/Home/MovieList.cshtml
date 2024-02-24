@@ -10,6 +10,7 @@
     <thead>
         <tr>
             <th>Title</th>
+            <th>Category</th> <!-- Add this header for Category -->
             <th>Year</th>
             <th>Director</th>
             <th>Rating</th>
@@ -17,7 +18,7 @@
             <th>CopiedToPlex</th>
             <th>LentTo</th>
             <th>Notes</th>
-            <th>Actions</th> <!-- Add this header for the delete button -->
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@
                 <td>
                     <a asp-action="Details" asp-route-id="@movie.Id">@movie.Title</a>
                 </td>
+                <td>@movie.Category?.Category ?? "No Category"</td> <!-- Display Category Name -->
                 <td>@movie.Year</td>
                 <td>@movie.Director</td>
                 <td>@movie.Rating</td>
