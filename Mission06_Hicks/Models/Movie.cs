@@ -26,9 +26,11 @@ namespace Mission06_LastName.Models
         public string? Rating { get; set; }
         
         [Required]
+        [Range(0, 1)]
         public int Edited { get; set; } 
 
         [Required]
+        [Range(0, 1)]
         public int CopiedToPlex { get; set; }
 
         public string? LentTo { get; set; }

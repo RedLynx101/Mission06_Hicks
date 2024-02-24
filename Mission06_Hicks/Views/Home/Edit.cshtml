@@ -1,8 +1,10 @@
-﻿@model Mission06_LastName.Models.Movie
-
+﻿
 @{
     ViewData["Title"] = "Edit";
 }
+
+@model Mission06_LastName.Models.Movie
+
 
 <h1>Edit</h1>
 
@@ -43,13 +45,15 @@
                 </select>
                 <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <input type="checkbox" asp-for="Edited" class="form-check-input" />
-                <label asp-for="Edited" class="form-check-label">Edited</label>
+            <div class="form-group">
+                <label asp-for="Edited" class="control-label">Edited</label>
+                <input asp-for="Edited" class="form-control" />
+                <span asp-validation-for="Edited" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <input type="checkbox" asp-for="CopiedToPlex" class="form-check-input" />
-                <label asp-for="CopiedToPlex" class="form-check-label">Copied to Plex</label>
+            <div class="form-group">
+                <label asp-for="CopiedToPlex" class="control-label">CopiedToPlex</label>
+                <input asp-for="CopiedToPlex" class="form-control" />
+                <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LentTo" class="control-label">Lent To</label>

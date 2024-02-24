@@ -85,7 +85,11 @@ namespace Mission06_Hicks.Controllers
                 return NotFound();
             }
 
-            var movie = _context.Movies.FirstOrDefault(m => m.Id == id);
+            // Include the Category entity when fetching the Movie
+            var movie = _context.Movies
+                        .Include(m => m.Category) // Eager load the Category entity
+                        .FirstOrDefault(m => m.Id == id);
+
             if (movie == null)
             {
                 return NotFound();
@@ -94,7 +98,6 @@ namespace Mission06_Hicks.Controllers
             return View(movie);
         }
 
-        // GET: Movies/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -108,9 +111,12 @@ namespace Mission06_Hicks.Controllers
                 return NotFound();
             }
 
-            ViewBag.Categories = new SelectList(_context.Categories, "CategoryId", "Category", movie.CategoryId); // Populate categories for dropdown
+            // Fetch categories and assign to ViewBag
+            ViewBag.Categories = new SelectList(_context.Categories, "CategoryId", "CategoryName", movie.CategoryId);
+
             return View(movie);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
