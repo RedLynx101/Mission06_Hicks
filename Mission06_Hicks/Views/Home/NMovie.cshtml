@@ -10,7 +10,7 @@
     <form asp-action="Apply" method="post">
         <div class="form-group">
             <label for="Category">Category</label>
-            <select class="form-control" id="Category" asp-for="Category" required>
+            <select class="form-control" id="Category" asp-for="Category">
                 <option>Action</option>
                 <option>Adventure</option>
                 <option>Romance</option>
@@ -24,11 +24,11 @@
         </div>
         <div class="form-group">
             <label for="Year">Year</label>
-            <input type="number" class="form-control" id="Year" asp-for="Year" required>
+            <input type="number" class="form-control" id="Year" asp-for="Year" min="1888" required>
         </div>
         <div class="form-group">
             <label for="Director">Director</label>
-            <input type="text" class="form-control" id="Director" asp-for="Director" required>
+            <input type="text" class="form-control" id="Director" asp-for="Director">
         </div>
         <div class="form-group">
             <label for="Rating">Rating</label>
@@ -42,6 +42,10 @@
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="Edited" asp-for="Edited">
             <label class="form-check-label" for="Edited">Edited</label>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="CopiedToPlex" asp-for="CopiedToPlex">
+            <label class="form-check-label" for="CopiedToPlex">CopiedToPlex</label>
         </div>
         <div class="form-group">
             <label for="LentTo">Lent To</label>
