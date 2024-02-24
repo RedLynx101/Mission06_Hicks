@@ -8,7 +8,7 @@ namespace Mission06_LastName.Models
         public int Id { get; set; }
 
         [Required]
-        public string? Category { get; set; }
+        public string? CategoryId { get; set; }
 
         [Required]
         public string Title { get; set; }
@@ -34,4 +34,5 @@ namespace Mission06_LastName.Models
         [MaxLength(25)]
         public string? Notes { get; set; }
     }
+
 }
