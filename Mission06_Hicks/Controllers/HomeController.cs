@@ -61,9 +61,13 @@ namespace Mission06_Hicks.Controllers
 
         public IActionResult MovieList()
         {
-            var movies = _context.Movies.Include(m => m.Category).ToList(); 
+            var movies = _context.Movies
+                                 .Include(m => m.Category)
+                                 .OrderBy(m => m.Title) // Order by Title A-Z
+                                 .ToList();
             return View(movies);
         }
+
 
 
         [HttpPost]
