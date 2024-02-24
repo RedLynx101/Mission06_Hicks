@@ -49,13 +49,14 @@ namespace Mission06_Hicks.Controllers
             {
                 _context.Movies.Add(movie);
                 _context.SaveChanges();
-                return RedirectToAction("MovieList");
+                return RedirectToAction("MovieList"); // Redirect to the MovieList action which will lead to its view
             }
 
             // Reload categories in case of a validation error
             ViewBag.Categories = new SelectList(_context.Categories.OrderBy(c => c.CategoryName), "CategoryId", "CategoryName");
-            return View(movie);
+            return View("Index", movie); // Return to the NMovie view
         }
+
 
 
         public IActionResult MovieList()

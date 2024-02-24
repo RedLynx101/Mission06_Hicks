@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             <label for="Year">Year</label>
-            <input type="number" class="form-control" id="Year" asp-for="Year" min="1888" required>
+            <input type="number" class="form-control" id="Year" asp-for="Year" min="1888" max="2100" required>
         </div>
         <div class="form-group">
             <label for="Director">Director</label>
@@ -36,14 +36,17 @@
                 <option>R</option>
             </select>
         </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="Edited" asp-for="Edited">
-            <label class="form-check-label" for="Edited">Edited</label>
+
+        <div class="form-group">
+            <label for="Edited">Edited</label>
+            <input type="number" class="form-control" id="Edited" asp-for="Edited" min="0" max="1" required>
         </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="CopiedToPlex" asp-for="CopiedToPlex">
-            <label class="form-check-label" for="CopiedToPlex">CopiedToPlex</label>
+
+        <div class="form-group">
+            <label for="CopiedToPlex">CopiedToPlex</label>
+            <input type="number" class="form-control" id="CopiedToPlex" asp-for="CopiedToPlex" min="0" max="1" required>
         </div>
+
         <div class="form-group">
             <label for="LentTo">Lent To</label>
             <input type="text" class="form-control" id="LentTo" asp-for="LentTo">
