@@ -60,7 +60,7 @@ namespace Mission06_Hicks.Controllers
 
         public IActionResult MovieList()
         {
-            var movies = _context.Movies.Include(m => m.Category).ToList(); // Ensure you're including the Category
+            var movies = _context.Movies.Include(m => m.Category).ToList(); 
             return View(movies);
         }
 

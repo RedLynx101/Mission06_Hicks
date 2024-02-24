@@ -5,25 +5,18 @@
 namespace Mission06_Hicks.Migrations
 {
     /// <inheritdoc />
-    public partial class Version6 : Migration
+    public partial class Version13 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<bool>(
-                name: "CopiedToPlex",
-                table: "Movies",
-                type: "INTEGER",
-                nullable: false,
-                defaultValue: false);
+
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "CopiedToPlex",
-                table: "Movies");
+
         }
     }
 }

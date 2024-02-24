@@ -14,7 +14,7 @@
             Category
         </dt>
         <dd class="col-sm-10">
-            @Model.Category?.Category ?? "No Category" // Display Category Name or "No Category" if null
+            @Model.Category?.CategoryName
         </dd>
         <dt class="col-sm-2">
             Title
@@ -44,13 +44,13 @@
             Edited
         </dt>
         <dd class="col-sm-10">
-            @Model.Edited ? "Yes" : "No" // Change display to Yes/No for clarity
+            @Model.Edited
         </dd>
         <dt class="col-sm-2">
             Copied To Plex
         </dt>
         <dd class="col-sm-10">
-            @Model.CopiedToPlex ? "Yes" : "No" // Same here for CopiedToPlex
+            @Model.CopiedToPlex
         </dd>
         <dt class="col-sm-2">
             Lent To

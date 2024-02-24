@@ -5,9 +5,9 @@ namespace Mission06_LastName.Models
     public class Category
     {
         [Key]
-        public string CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
         [Required]
-        public string Category { get; set; }
+        public string CategoryName { get; set; }
     }
 }

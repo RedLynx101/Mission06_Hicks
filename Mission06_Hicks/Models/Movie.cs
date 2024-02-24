@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission06_LastName.Models
 {
@@ -8,7 +9,10 @@ namespace Mission06_LastName.Models
         public int Id { get; set; }
 
         [Required]
-        public string? CategoryId { get; set; }
+        public int? CategoryId { get; set; }
+
+        [ForeignKey("CategoryId")] // This establishes the relationship
+        public Category? Category { get; set; } // Navigation property
 
         [Required]
         public string Title { get; set; }
@@ -17,17 +21,15 @@ namespace Mission06_LastName.Models
         [Range(1888, 2100)]
         public int Year { get; set; }
 
-        [Required]
         public string? Director { get; set; }
 
-        [Required]
-        public string Rating { get; set; }
+        public string? Rating { get; set; }
         
         [Required]
-        public bool Edited { get; set; } // Empty returns false, so it will return some value regardless of user intent
-        
+        public int Edited { get; set; } 
+
         [Required]
-        public bool CopiedToPlex { get; set; }
+        public int CopiedToPlex { get; set; }
 
         public string? LentTo { get; set; }
 
