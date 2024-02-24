@@ -63,7 +63,7 @@ namespace Mission06_Hicks.Controllers
         {
             var movies = _context.Movies
                                  .Include(m => m.Category)
-                                 .OrderBy(m => m.Title) // Order by Title A-Z
+                                 .OrderBy(m => m.Title) // Order by Title #, then A-Z
                                  .ToList();
             return View(movies);
         }
